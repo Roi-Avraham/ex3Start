@@ -15,9 +15,9 @@ Circle circleFromThreePoints(Point a, Point b, Point c){
     Point middlePointBC((b.x + c.x)/ 2, (b.y +c.y) / 2); // mid point of line BC
     float slopBC = (c.y - b.y) / (c.x - b.x); // the slop of BC
     float pSlopBC = - 1/slopBC; // the perpendicular slop of BC
-    float x = (- pSlopBC*middlePointBC.x + middlePointBC.y + pSlopAB*middlePointAB.x -middlePointAB.y)
+    float x = ((pSlopAB * middlePointAB.x - middlePointAB.y) -pSlopBC*middlePointBC.x + middlePointBC.y)
             / (pSlopAB - pSlopBC);
-    float y = pSlopAB * (x - middlePointAB.x) + middlePointAB.y;
+    float y = -pSlopAB * (middlePointAB.x - x) + middlePointAB.y;
     Point center(x,y);
     float radius=distance(center,a);
     return Circle(center,radius);
